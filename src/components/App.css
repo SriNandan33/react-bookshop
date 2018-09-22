@@ -34,4 +34,15 @@ html{
 
 .book-list-item img{
 	width: 60%;
+	height: 60%;
+}
+
+.book-list-item button{
+	padding: 0.5rem;
+	width: 80%;
+	background-color: #5898e8;
+	color: #fff;
+	outline: none;
+	border: none;
+	cursor: pointer;
 }
