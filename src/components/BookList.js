@@ -3,9 +3,16 @@ import BookCard from './BookCard';
 
 const BookList = ({books}) =>(
 	<div className="book-list">
-		{books.map(book =>
-		<BookCard  key={book.id} book={book}/>
-		)}
+		{books.length > 0 && 
+			<React.Fragment>
+			{books.map(book =>
+				<BookCard  key={book.id} book={book}/>
+			)}
+			</React.Fragment>
+		}
+		{books.length === 0 &&
+			<h3>No results found!</h3>
+		}
 	</div>
 )
 
