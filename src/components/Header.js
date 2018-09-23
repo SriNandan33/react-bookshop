@@ -4,8 +4,7 @@ import React from 'react';
 
 class Header extends React.Component{
 	render(){
-		let {handleSearchChange, cartCount} = this.props;
-		console.log(cartCount)
+		let {handleSearchChange, cartCount, handleCartOpen} = this.props;
 		return(
 			<header className="header">
 				<div className="main-title"><h1><i className="fas fa-book-open"></i> BookShopy</h1></div>
@@ -15,7 +14,7 @@ class Header extends React.Component{
 					</form>
 				</div>
 				<div className="cart">
-					<i className="fas fa-shopping-cart cart-icon" >
+					<i className="fas fa-shopping-cart cart-icon" onClick={handleCartOpen} >
 						<span className="cart-count">{cartCount}</span>
 					</i>
 
