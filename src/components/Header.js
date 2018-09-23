@@ -4,7 +4,8 @@ import React from 'react';
 
 class Header extends React.Component{
 	render(){
-		let {handleSearchChange} = this.props;
+		let {handleSearchChange, cartCount} = this.props;
+		console.log(cartCount)
 		return(
 			<header className="header">
 				<div className="main-title"><h1><i className="fas fa-book-open"></i> BookShopy</h1></div>
@@ -13,7 +14,12 @@ class Header extends React.Component{
 						<input type="text" placeholder="Search for Books..."  onChange={(e)=>handleSearchChange(e)}/>
 					</form>
 				</div>
-				<span className="cart"><i className="fas fa-shopping-cart cart-icon" ></i></span>
+				<div className="cart">
+					<i className="fas fa-shopping-cart cart-icon" >
+						<span className="cart-count">{cartCount}</span>
+					</i>
+
+				</div>
 			</header>
 		)
 	}

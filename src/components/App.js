@@ -7,8 +7,12 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state={keyword: '',};
+    this.state={
+      keyword: '',
+      cart: [],
+    };
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.addBookToCart = this.addBookToCart.bind(this);
   }
   handleSearchChange(e){
     this.setState({
@@ -16,17 +20,30 @@ class App extends Component {
 
     });
   }
+  addBookToCart(book){
+    let cartItems = this.state.cart.slice();
+    let doesBookExist = cartItems.filter(item=> item.id=== book.id).length > 0;
+    if(!doesBookExist){
+      cartItems.push(book);
+      this.setState({
+        cart: cartItems
+      });
+    }
+  }
   render() {
     let {keyword} = this.state;
+    console.log(this.state)
     const filteredBooks = books.filter((book)=>{
       let bookTitle = book.title.toLowerCase();
       return bookTitle.indexOf(keyword) > -1;
     });
     return (
     	<div>
-    		<Header handleSearchChange={this.handleSearchChange}/>
+    		<Header handleSearchChange={this.handleSearchChange} cartCount={this.state.cart.length}/>
 	    	<div className="container">
-		    	<BookList books={filteredBooks} />
+		    	<BookList books={filteredBooks}
+                    addBookToCart={this.addBookToCart}
+           />
 	     	</div>
 	    </div>
     );

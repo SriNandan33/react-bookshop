@@ -1,12 +1,16 @@
 import React from 'react';
 import BookCard from './BookCard';
 
-const BookList = ({books}) =>(
+const BookList = ({books, addBookToCart}) =>(
 	<div className="book-list">
 		{books.length > 0 && 
 			<React.Fragment>
 			{books.map(book =>
-				<BookCard  key={book.id} book={book}/>
+				<BookCard  
+					key={book.id}
+				 	book={book} 
+				 	addBookToCart={addBookToCart}
+				/>
 			)}
 			</React.Fragment>
 		}
