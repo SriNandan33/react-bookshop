@@ -29,42 +29,46 @@ class App extends Component {
   }
   addBookToCart(book){
     let cartItems = this.state.cart.slice();
+    let cartTotal = this.state.cartTotal;
     let doesBookExist = cartItems.filter(item=> item.id=== book.id).length > 0;
     if(!doesBookExist){
       cartItems.push({...book, quantity: 1});
       this.setState({
         cart: cartItems,
-        cartTotal: this.state.cartTotal += book.price,
+        cartTotal: cartTotal += book.price,
       });
     }
   }
   removeBookFromCart(book){
     let cartItems=  this.state.cart.slice();
+    let cartTotal = this.state.cartTotal;
     cartItems = cartItems.filter(cartItem=> cartItem.id !== book.id)
     this.setState({
       cart: cartItems,
-      cartTotal: this.state.cartTotal -= book.price
+      cartTotal: cartTotal -= book.price
     });
 
   }
   handleIncreaseQuantity(book){
     let cartItems = this.state.cart.slice();
+    let cartTotal = this.state.cartTotal;
     let bookIndex = cartItems.findIndex(item => item.id===book.id);
     cartItems[bookIndex].quantity += 1;
     this.setState({
       cart: cartItems,
-      cartTotal: this.state.cartTotal += book.price,
+      cartTotal: cartTotal += book.price,
     });
   }
   handleDecreaseQuantity(book){
     let cartItems = this.state.cart.slice();
+    let cartTotal = this.state.cartTotal;
     let bookIndex = cartItems.findIndex(item => item.id===book.id);
     let currentQuantity = cartItems[bookIndex].quantity;
     cartItems[bookIndex].quantity -= 1;
     if(currentQuantity > 1){
       this.setState({
         cart: cartItems,
-        cartTotal: this.state.cartTotal -= book.price,
+        cartTotal: cartTotal -= book.price,
       });
     }else{
       // decreasing quantity from 1 to 0 should remove book from cart.
@@ -93,6 +97,7 @@ class App extends Component {
 	    	<div className="container">
 		    	<BookList books={filteredBooks}
                     addBookToCart={this.addBookToCart}
+                    cartItems={cart}
          />
         <div className={`cart-container ${this.state.openCart? 'cart-open' : ''}`}>
           <CartList 

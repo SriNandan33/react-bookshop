@@ -106,8 +106,16 @@ html{
 	width: 60%;
 	height: 60%;
 }
+.book-list-item .book-price{
+	font-size: 16px;
+    font-weight: 500;
+    color: #212121;
+}
+.book-list-item .book-price i{
+	font-size: 14px;
+}
 
-.book-list-item button{
+.book-list-item .cart-button{
 	padding: 0.5rem;
 	width: 80%;
 	background-color: #5898e8;
@@ -115,6 +123,10 @@ html{
 	outline: none;
 	border: none;
 	cursor: pointer;
+}
+.in-cart{
+	background-color: #ff6161 !important;
+	cursor: not-allowed !important;
 }
 
 .cart-container{
@@ -142,8 +154,14 @@ html{
 }
 .cart-list .cart-details{
 	max-height: 30px;
+	font-size: 16px;
+    font-weight: 500;
+    color: #212121;
 	display: flex;
 	justify-content: space-between;
+}
+.cart-list .cart-details .cart-total i{
+	font-size: 14px;
 }
 .cart-list hr{
 	width: 100%;
@@ -167,6 +185,16 @@ html{
 .cart-list .cart-list-item .cart-item-content{
 	padding: 0 0 0 10px;
 }
+.cart-list .cart-list-item .cart-item-content .cart-item-price{
+	font-size: 16px;
+    font-weight: 500;
+    color: #212121;
+}
+.cart-list .cart-list-item .cart-item-content .cart-item-price i{
+	font-size: 14px;
+
+}
+
 .cart-list .cart-list-item .cart-item-content p{
 	margin: 0;
 	margin-bottom: 5px;

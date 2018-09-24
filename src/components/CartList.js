@@ -13,7 +13,7 @@ const CartList = ({
 			<React.Fragment>
 				<div className="cart-details">
 					<p>Items: {cartItems.length}</p>
-					<p>Total: ${cartTotal}</p>
+					<p className="cart-total">Total: <i className="fas fa-rupee-sign"></i> {cartTotal}</p>
 				</div>
 				<hr />
 				{cartItems.map(item=>(

@@ -1,7 +1,7 @@
 import React from 'react';
 import BookCard from './BookCard';
 
-const BookList = ({books, addBookToCart}) =>(
+const BookList = ({books, addBookToCart, cartItems}) =>(
 	<div className="book-list">
 		{books.length > 0 && 
 			<React.Fragment>
@@ -10,6 +10,7 @@ const BookList = ({books, addBookToCart}) =>(
 					key={book.id}
 				 	book={book} 
 				 	addBookToCart={addBookToCart}
+				 	cartItems={cartItems}
 				/>
 			)}
 			</React.Fragment>

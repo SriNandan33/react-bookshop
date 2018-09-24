@@ -7,7 +7,9 @@ const CartCard = ({item, removeBookFromCart, handleIncreaseQuantity, handleDecre
 			<img src={item.thumbnail} alt={item.title}/>
 			<div className="cart-item-content">
 				<p>{item.title}</p>
-				<p>${`${item.price * item.quantity}`}</p>
+				<p className="cart-item-price">
+					<i className="fas fa-rupee-sign"></i> {`${item.price * item.quantity}`}
+				</p>
 				<div className="cart-quantity">
 					<button onClick={()=>handleDecreaseQuantity(item)}>-</button>
 					<div>{item.quantity}</div>
