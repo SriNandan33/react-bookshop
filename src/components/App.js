@@ -11,12 +11,15 @@ class App extends Component {
     this.state={
       keyword: '',
       cart: [],
+      cartTotal: 0,
       openCart: false,
     };
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.addBookToCart = this.addBookToCart.bind(this);
     this.handleCartOpen = this.handleCartOpen.bind(this);
     this.removeBookFromCart = this.removeBookFromCart.bind(this);
+    this.handleIncreaseQuantity = this.handleIncreaseQuantity.bind(this);
+    this.handleDecreaseQuantity = this.handleDecreaseQuantity.bind(this);
   }
   handleSearchChange(e){
     this.setState({
@@ -28,9 +31,10 @@ class App extends Component {
     let cartItems = this.state.cart.slice();
     let doesBookExist = cartItems.filter(item=> item.id=== book.id).length > 0;
     if(!doesBookExist){
-      cartItems.push(book);
+      cartItems.push({...book, quantity: 1});
       this.setState({
-        cart: cartItems
+        cart: cartItems,
+        cartTotal: this.state.cartTotal += book.price,
       });
     }
   }
@@ -38,9 +42,34 @@ class App extends Component {
     let cartItems=  this.state.cart.slice();
     cartItems = cartItems.filter(cartItem=> cartItem.id !== book.id)
     this.setState({
-      cart: cartItems
+      cart: cartItems,
+      cartTotal: this.state.cartTotal -= book.price
     });
 
+  }
+  handleIncreaseQuantity(book){
+    let cartItems = this.state.cart.slice();
+    let bookIndex = cartItems.findIndex(item => item.id===book.id);
+    cartItems[bookIndex].quantity += 1;
+    this.setState({
+      cart: cartItems,
+      cartTotal: this.state.cartTotal += book.price,
+    });
+  }
+  handleDecreaseQuantity(book){
+    let cartItems = this.state.cart.slice();
+    let bookIndex = cartItems.findIndex(item => item.id===book.id);
+    let currentQuantity = cartItems[bookIndex].quantity;
+    cartItems[bookIndex].quantity -= 1;
+    if(currentQuantity > 1){
+      this.setState({
+        cart: cartItems,
+        cartTotal: this.state.cartTotal -= book.price,
+      });
+    }else{
+      // decreasing quantity from 1 to 0 should remove book from cart.
+      this.removeBookFromCart(book);
+    }
   }
   handleCartOpen(){
     this.setState({
@@ -48,7 +77,8 @@ class App extends Component {
     });
   }
   render() {
-    let {keyword, cart} = this.state;
+    let {keyword, cart, cartTotal} = this.state;
+    console.log(this.state.cart)
     const filteredBooks = books.filter((book)=>{
       let bookTitle = book.title.toLowerCase();
       return bookTitle.indexOf(keyword) > -1;
@@ -67,7 +97,10 @@ class App extends Component {
         <div className={`cart-container ${this.state.openCart? 'cart-open' : ''}`}>
           <CartList 
             cartItems={cart}
+            cartTotal={cartTotal}
             removeBookFromCart={this.removeBookFromCart}
+            handleIncreaseQuantity={this.handleIncreaseQuantity}
+            handleDecreaseQuantity={this.handleDecreaseQuantity}
           />
         </div>
 	     	</div>

@@ -140,6 +140,15 @@ html{
 	flex-direction: column;
 	padding: 5px;
 }
+.cart-list .cart-details{
+	max-height: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+.cart-list hr{
+	width: 100%;
+	background-color: gray;
+}
 .cart-list .cart-list-item{
 	position: relative;
 	display: flex;
