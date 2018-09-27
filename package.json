@@ -2,7 +2,7 @@
   "name": "bookshopy",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://srinandan33.github.io/React-Bookshop",
+  "homepage": "https://srinandan33.github.io/react-bookshop",
   "dependencies": {
     "gh-pages": "^2.0.0",
     "react": "^16.5.2",
