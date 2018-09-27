@@ -25,6 +25,9 @@ const CartList = ({
 						handleDecreaseQuantity={handleDecreaseQuantity}
 					/>
 				))}
+				{cartItems.length === 0 &&
+					<h3>Your Cart is Empty</h3>
+				}
 			</React.Fragment>
 		</div>
 	);
