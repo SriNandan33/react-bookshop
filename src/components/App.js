@@ -45,7 +45,7 @@ class App extends Component {
     cartItems = cartItems.filter(cartItem=> cartItem.id !== book.id)
     this.setState({
       cart: cartItems,
-      cartTotal: cartTotal -= book.price
+      cartTotal: cartTotal -= (book.price * book.quantity)
     });
 
   }
@@ -64,8 +64,8 @@ class App extends Component {
     let cartTotal = this.state.cartTotal;
     let bookIndex = cartItems.findIndex(item => item.id===book.id);
     let currentQuantity = cartItems[bookIndex].quantity;
-    cartItems[bookIndex].quantity -= 1;
     if(currentQuantity > 1){
+      cartItems[bookIndex].quantity -= 1;
       this.setState({
         cart: cartItems,
         cartTotal: cartTotal -= book.price,
