@@ -144,7 +144,7 @@ html{
 
 .cart-container{
 	position: fixed;
-	right: -100%;
+	right: -200%;
 	top: 56px;
 	height: 100vh;
 	z-index: 9999;
@@ -251,4 +251,37 @@ html{
     background-color: #fff;
     border: 1px solid #c2c2c2;
     margin: 0 9px;
+}
+
+
+@media all and (max-width: 1200px){
+	.header .main-title{
+		flex: 1 1 35%;
+	}
+	.header .cart{
+		flex: 1 1 10%;
+	}
+}
+
+@media all and (max-width: 700px){
+	.book-list{
+		padding: 0;
+	}
+}
+
+
+@media all and (max-width: 450px){
+	.header{
+		flex-direction: column;
+		height: 180px;
+	}
+	.cart-container{
+		top: 180px;
+		height: calc(100vh - 180px);
+		width: 100%;
+
+	}
+	.container{
+		padding-top: 196px;
+	}
 }
