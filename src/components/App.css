@@ -25,6 +25,8 @@ html{
 	align-items: center;
 	background-color: #5898e8;
 	color: #fff;
+	font-family: 'Lobster', cursive;
+	font-weight: 300;
 	height: 56px;
 	width: 100%;
 }
@@ -35,7 +37,7 @@ html{
 .header .main-title{
 	flex: 1 1 20%;
 	padding: 10px 18px;
-	letter-spacing: 0.5px;
+	letter-spacing: 1.5px;
 	font-size: 15px;
 	line-height: 22px;
 	font-weight: 900;
