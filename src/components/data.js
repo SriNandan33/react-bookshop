@@ -71,7 +71,7 @@ export const books = [
 	},
 	{
 		id: 'j-3',
-		title: 'Javascript the Definitive Guide',
+		title: 'Javascript Guide',
 		thumbnail: 'img/js/javascript-the-definitive-guide.jpeg',
 		price: 675,
 		category: 'javascript',
@@ -106,7 +106,7 @@ export const books = [
 	},
 	{
 		id: 'j-8',
-		title: 'Programming JS Applications',
+		title: 'Programming JS Apps',
 		thumbnail: 'img/js/programming-javascript-applications.jpeg',
 		price: 675,
 		category: 'javascript',
