@@ -11,6 +11,7 @@ class App extends Component {
     this.state={
       keyword: '',
       cart: [],
+      isMobile: false,
       cartTotal: 0,
       openCart: false,
     };
@@ -20,12 +21,28 @@ class App extends Component {
     this.removeBookFromCart = this.removeBookFromCart.bind(this);
     this.handleIncreaseQuantity = this.handleIncreaseQuantity.bind(this);
     this.handleDecreaseQuantity = this.handleDecreaseQuantity.bind(this);
+    this.handleMobileSearch = this.handleMobileSearch.bind(this);
+    this.handleBackClick = this.handleBackClick.bind(this);
   }
   handleSearchChange(e){
     this.setState({
       keyword: e.target.value.toLowerCase()
 
     });
+  }
+  handleSearchSubmit(e){
+    e.preventDefault();
+  }
+  handleMobileSearch(){
+    this.setState({
+      isMobile: true
+    })
+  }
+  handleBackClick(){
+    this.setState({
+      isMobile: false,
+      keyword: '',
+    })
   }
   addBookToCart(book){
     let cartItems = this.state.cart.slice();
@@ -81,8 +98,7 @@ class App extends Component {
     });
   }
   render() {
-    let {keyword, cart, cartTotal} = this.state;
-    console.log(this.state.cart)
+    let {keyword, cart, cartTotal, isMobile} = this.state;
     const filteredBooks = books.filter((book)=>{
       let bookTitle = book.title.toLowerCase();
       return bookTitle.indexOf(keyword) > -1;
@@ -93,6 +109,11 @@ class App extends Component {
           handleSearchChange={this.handleSearchChange}
           cartCount={this.state.cart.length}
           handleCartOpen={this.handleCartOpen}
+          keyword={keyword}
+          isMobile={isMobile}
+          handleMobileSearch={this.handleMobileSearch}
+          handleBackClick = {this.handleBackClick}
+          handleSearchSubmit={this.handleSearchSubmit}
         />
 	    	<div className="container">
 		    	<BookList books={filteredBooks}
